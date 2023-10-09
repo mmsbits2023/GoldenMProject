@@ -71,11 +71,15 @@ const countryOptions = Object.keys(countries).map((countryCode) => ({
                     PhoneNumbber </label>
                       <input type="text" name="phoneNumber" className="form-control" id="PhoneNumberId" //autocomplete="off"
   />
-  </div>*/}
-                        <PhoneInput className='selecte-data'
-        country={'us'} // Default country (you can set to any country code)
-        value={phoneNumber}
-        onChange={handleOnChange}
+  </div>*/}     
+                      
+                     
+                      <PhoneInput className='selecte-data'
+                         placeholder='Enter phone number'
+                        country={'in'} // Default country (you can set to any country code)
+                        value={phoneNumber}
+                          onChange={handleOnChange}
+                          
       />
                     
       
