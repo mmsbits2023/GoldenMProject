@@ -8,8 +8,8 @@ import { green } from '@mui/material/colors'
 import { Form } from 'react-bootstrap'
 import Select from 'react-select';
 import { countries } from 'countries-list';
-import { PhoneInput } from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css'
+import 'react-phone-input-2/lib/style.css';
+import PhoneInput from 'react-phone-input-2';
 
 const InvestorRegister = () => {
  /*Country list */     
@@ -22,22 +22,14 @@ const countryOptions = Object.keys(countries).map((countryCode) => ({
             setSelectedCountry(selectedOption);
         };
   /*country code */
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [valid, setValid] = useState(true);
-  const handleChange1 = (value) => { 
-    //const input = event.target.value;
-    setPhoneNumber(value);
-    setValid(validPhoneNumber(value));
-  }
-  const validPhoneNumber = (phoneNumber) => { 
-    const phoneNumberPattern = /^\d{10}$/;
-    return phoneNumberPattern.test(phoneNumber);
-  }
-  
-  
+   const [phoneNumber, setPhoneNumber] = useState('');
 
+  const handleOnChange = (value, data) => {
+    // `value` contains the selected phone number with country code
+    setPhoneNumber(value);
+  };
   
-  
+    
   
   return (
     <div>
@@ -74,12 +66,18 @@ const countryOptions = Object.keys(countries).map((countryCode) => ({
                     LastName </label>
                       <input type="text" name="lastName" className="form-control" id="LastNameId" //autocomplete="off"
                         /></div>
-                       <div className="mb-1 register">
-                <label htmlFor="PhoneNumberId" className="form-label">
+                      {/*<div className="mb-1 register">
+                        <label htmlFor="PhoneNumberId" className="form-label">
                     PhoneNumbber </label>
                       <input type="text" name="phoneNumber" className="form-control" id="PhoneNumberId" //autocomplete="off"
-                     /></div>
-                      
+  />
+  </div>*/}
+                        <PhoneInput className='selecte-data'
+        country={'us'} // Default country (you can set to any country code)
+        value={phoneNumber}
+        onChange={handleOnChange}
+      />
+                    
       
                                           </div>
                 <div className='flex-container'>
