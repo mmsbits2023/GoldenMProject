@@ -70,7 +70,7 @@ const InvestorLogin= () => {
           else {
               window.alert("Login Successfully");
               console.log("Successfully Login");
-              navigate('/logout');
+              navigate('/buyGoldCoin');
         
           
           }

@@ -25,15 +25,23 @@ const BuyGoldCoin= () => {
                                                  
                                       <div className="row p-4 "style={{width:"100%",textAlign:"center",marginLeft:"80px"}}>
                                     <div  className="col-6 text-right">
-                                <NavLink to="/" component={NavLink}>
+                                
                                   <div variant="outlined" className="p-1">
                                                       Gold Coin
-                            <select id="country">
-                          <option value="india">India</option>
-                            <option value="us">Us</option>
+                            <select id="coin">
+                          <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="1">3</option>
+                            <option value="2">4</option>
+                            <option value="1">5</option>
+                            <option value="2">6</option>
+                            <option value="1">7</option>
+                            <option value="2">8</option>
+                            <option value="1">9</option>
+                            <option value="2">10</option>
                           </select>
                                   </div>
-                                </NavLink>
+                                
                               </div>
                               
                                                                       

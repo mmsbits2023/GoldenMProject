@@ -69,7 +69,7 @@ const InvestorLogout= () => {
           else {
               window.alert("Logout Successfully");
               console.log("Successfully Logout");
-              navigate('/register');
+              navigate('/');
         
           
           }

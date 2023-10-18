@@ -33,10 +33,10 @@ const countryOptions = Object.keys(countries).map((countryCode) => ({
     firstName: '',
     middleName: '',
     lastName: '',
-    phoneNumber: '',
+   // phoneNumber: '',
     email: '',
     mpin:'',
-   country:'',
+  // country:'',
    city:'',
    photoId:'',
    walletAddress:''
@@ -60,13 +60,13 @@ const [errors, setErrors] = useState('');
       validationErrors.lastName='LastName is required'
     }
 
-    if (!data.phoneNumber) {
+  /*  if (!data.phoneNumber) {
       validationErrors.phoneNumber = 'PhoneNumber is required'
     } else if (data.phoneNumber.length < 10) {
       validationErrors.phoneNumber = "PhoneNumber should be at least 10 digit"
     } else if (data.phoneNumber.length > 10) {
       validationErrors.phoneNumber = "PhoneNumber should be at least 10 digit "
-    }
+    }*/
         
        if (!data.email) {
       validationErrors.email = "email is required"
@@ -87,9 +87,9 @@ const [errors, setErrors] = useState('');
       validationErrors.photoId='PhotoId is required'
     }
 
-     if (!data.country) { 
-      validationErrors.country='Country is required'
-    }
+     //if (!data.country) { 
+      //validationErrors.country='Country is required'
+    //}
      
      if (!data.city) { 
       validationErrors.city='City is required'
@@ -128,7 +128,7 @@ const [errors, setErrors] = useState('');
 
         })
         
-      })
+      });
       
       const result = await response.json();
 
