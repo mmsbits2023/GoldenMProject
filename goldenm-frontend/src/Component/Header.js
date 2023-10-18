@@ -31,6 +31,9 @@ const Header = () => {
               <Item key="login" icon={<UserOutlined/>}className='float-right'>
                   <Link to='/login'>Login</Link>
               </Item>
+              <Item key="logout" icon={<UserOutlined/>}className='float-right'>
+                  <Link to='/logout'>Logout</Link>
+              </Item>
                      
                         
                  

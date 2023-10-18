@@ -19,7 +19,7 @@ exports.registerInvestor = (async (request, response, next) => {
             phoneNumber,      
             email,
             mpin,
-            photoid,
+            photoId,
             walletAddress,
             country,
             city,
@@ -41,7 +41,7 @@ exports.registerInvestor = (async (request, response, next) => {
         InvestorDetailsCheck.phoneNumber = phoneNumber;
         InvestorDetailsCheck.email = email;
         InvestorDetailsCheck.password = mpin;
-        InvestorDetailsCheck.photoid = photoid;
+        InvestorDetailsCheck.photoId = photoId;
         InvestorDetailsCheck .walletAddress =walletAddress;
         InvestorDetailsCheck.country = country;
         InvestorDetailsCheck.city = city;
@@ -49,8 +49,7 @@ exports.registerInvestor = (async (request, response, next) => {
        
         const Investordetails1 = InvestorDetailsCheck.save(async function (error, saveResult) {
             if (error) { throw new Error(error); }
-  
-            
+              
             let responseData = {
                 status: "SUCCESS",
                 message: "Investor  registered successfully",

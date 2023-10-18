@@ -4,14 +4,14 @@ exports.InvestorRegisterSchema={
     properties:{
         phoneNumber:{
             type:"string",
-            minLength:13,
-            maxLength:13,
+            minLength:10,
+            maxLength:10,
             pattern:"^[0-9()-.s]+$",
         },
         mpin:{
             type:"string",
-            minLength:6,
-            maxLength:6,
+            minLength:9,
+            maxLength:16,
             pattern:"^[0-9()-.s]+$",
            // pattern:"(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!])^[0-9()-.s]+$"
       },
@@ -30,7 +30,7 @@ exports.InvestorRegisterSchema={
         pattern: "^[A-Z,a-z]",
         errorMessage:"Invalid lastName "
       },
-       photoid: {
+       photoId: {
         type: "string",
         pattern: "^[0-9()-.s]+$",
         errorMessage:"Invalid photoid "

@@ -20,37 +20,11 @@ const InvestorSchemas = new mongoose.Schema({
         type: String,
         required:""
     },
-    whatsAppNumber: {
-        type: String,
-    },
-    alternativeNumber: {
-        type:String
-    },
-    adharCard: {
-        type:String
-    },
-    panCard: {
-        type:String
-    },
+   
     email: {
         type:String
     },
-    pinCode: {
-     type:String
-    },
-    buildingName: {
-        type:String
-    },
-    flatNumber: {
-        type:String
-    },
-    streetName:
-    {
-      type:String
-    },
-    code: {
-        type:String
-    },
+     
     encry_password:{
         type:String
     },
@@ -70,7 +44,16 @@ const InvestorSchemas = new mongoose.Schema({
     },
     walletAddress: {
         type:String,
-    }
+    },
+   photoId:{
+    type:String
+   } ,
+   country:{
+    type:String
+   },
+   city:{
+    type:String
+   }
    
 })
 InvestorSchemas

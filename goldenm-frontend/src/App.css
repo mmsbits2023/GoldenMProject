@@ -174,3 +174,7 @@ section .container {
   padding: 5px;
 
 }
+.errorData{
+  text-align: center;
+  color: red;
+}
