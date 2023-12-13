@@ -11,7 +11,7 @@ import { Form } from 'react-bootstrap'
 
 
 
-const AddCoinDetails= () => {
+const Add4Coin= () => {
   
   const navigate = useNavigate();
   const [data, setData] = useState({
@@ -70,8 +70,9 @@ const AddCoinDetails= () => {
           
           }
         }
-  }
-  
+        
+    }
+   
     
   return (
     <div>
@@ -92,16 +93,16 @@ const AddCoinDetails= () => {
                             
                        <div className="mb-1 register " style={{width:"70%",textAlign:"center",marginLeft:"100px"}}>             
                     <label htmlFor="coinNumberId" className="form-label">
-                    CoinNUmber</label>
+                    CoinNumber</label>
                       <input type="text" name="coinNumber" className="form-control" id="coinNumberId" //autocomplete="off"
-                 onChange={handleInput} value={1}/>
+                 onChange={handleInput} value={4}/>
                   {errors.coinNumber && <span className='errorData'>{ errors.coinNumber}</span> }
                       </div>
                       <div className="mb-1 register  "style={{width:"70%",textAlign:"center",marginLeft:"100px"}}>
                 <label htmlFor="coinValueId" className="form-label">
                     CoinValue</label>
                       <input type="text" name="coinValue" className="form-control" id="coinValueId" //autocomplete="off"
-                onChange={handleInput} placeholder='1000'/>
+                onChange={handleInput} value={4000}/>
                  {errors.coinValue && <span className='errorData'>{ errors.coinValue}</span> }
           </div> 
               
@@ -109,14 +110,14 @@ const AddCoinDetails= () => {
                 <label htmlFor="coinWeightId" className="form-label">
                     CoinWeight</label>
                       <input type="text" name="coinWeight" className="form-control " id="coinWeightId" //autocomplete="off"
-                         onChange={handleInput} placeholder='1.45' />
+                         onChange={handleInput} value={5.80} />
                           {errors.coinWeight&& <span className='errorData'>{ errors.coinWeight}</span> }
                          </div>
                          <div className="mb-1 register "style={{width:"70%",textAlign:"center",marginLeft:"100px"}}>
                 <label htmlFor="coinTokenId" className="form-label">
                     CoinToken</label>
-                      <input type="password" name="coinToken" className="form-control " id="coinTokenId" //autocomplete="off"
-                         onChange={handleInput} placeholder='10000' />
+                      <input type="text" name="coinToken" className="form-control " id="coinTokenId" //autocomplete="off"
+                         onChange={handleInput} value={40000}/>
                           {errors.coinToken&& <span className='errorData'>{ errors.coinToken}</span> }
                          </div>
                      
@@ -146,4 +147,4 @@ const AddCoinDetails= () => {
   )
 }
 
-export default AddCoinDetails
+export default Add4Coin

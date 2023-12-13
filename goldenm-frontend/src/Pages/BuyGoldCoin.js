@@ -30,19 +30,16 @@ const BuyGoldCoin= () => {
                                 <NavLink to="/addCoinDetails" component={NavLink}>
                                   <Button  variant="outlined" className="p-1  bg-primary ">1</Button>
                                   </NavLink><br/><br/>
-                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <NavLink to="/add2Coin" component={NavLink}>
                                   <Button  variant="outlined" className="p-1  bg-primary ">2</Button>
                                   </NavLink><br/><br/>
-                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <NavLink to="/add3Coin" component={NavLink}>
                                   <Button  variant="outlined" className="p-1  bg-primary">3</Button>
                                   </NavLink><br/><br/>
-                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <NavLink to="/add4Coin" component={NavLink}>
                                   <Button  variant="outlined" className="p-1  bg-primary">4</Button>
                                   </NavLink><br/><br/>
-                                  <NavLink to="/addCoinDetails" component={NavLink}>
-                                  <Button  variant="outlined" className="p-1  bg-primary">5</Button>
-                                  </NavLink><br/><br/>
-                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <NavLink to="/add5Coin" component={NavLink}>
                                   <Button  variant="outlined" className="p-1  bg-primary">5</Button>
                                   </NavLink><br/><br/>
                                   <NavLink to="/addCoinDetails" component={NavLink}>
