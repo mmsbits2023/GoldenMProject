@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 import { Container } from '@mui/material'
 //import Button from '@mui/material/Button'
 import { NavLink } from 'react-router-dom'
-import { Form } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 
 
 
@@ -15,10 +15,9 @@ const BuyGoldCoin= () => {
       <Container>
         <div className=" row justify-content-center">
           <div className="col-md-6 col-lg-2 col-xl-6 col-sm-12">
-            {/* <CCard className="m-0"> */}
-            <Card.Body className="p-0 ">
+           
             <section className="w-full mx-auto items-center justify-center ">
-                             <Form className="shadow pt-2">
+                           
 
                             <h2 className="text-center p-3 fw-bold">Buy/Purchase Gold Coin</h2>
                          
@@ -26,29 +25,50 @@ const BuyGoldCoin= () => {
                                       <div className="row p-4 "style={{width:"100%",textAlign:"center",marginLeft:"80px"}}>
                                     <div  className="col-6 text-right">
                                 
-                                  <div variant="outlined" className="p-1">
-                                                      Gold Coin
-                            <select id="coin">
-                          <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="1">3</option>
-                            <option value="2">4</option>
-                            <option value="1">5</option>
-                            <option value="2">6</option>
-                            <option value="1">7</option>
-                            <option value="2">8</option>
-                            <option value="1">9</option>
-                            <option value="2">10</option>
-                          </select>
-                                  </div>
+                                          
+                               <div className="inline-flex " style={{ width: "30%", textAlign: "center", marginLeft: "200px" }}>
+                                <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary ">1</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary ">2</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">3</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">4</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">5</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">5</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">6</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">7</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">8</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">9</Button>
+                                  </NavLink><br/><br/>
+                                  <NavLink to="/addCoinDetails" component={NavLink}>
+                                  <Button  variant="outlined" className="p-1  bg-primary">10</Button>
+                                  </NavLink>
+                              </div>
                                 
                               </div>
                               
-                                                                      
-                            </div>
-                          </Form>     
+                                  </div>                                    
+                            
+                             
                               </section>
-                          </Card.Body>
+                          
                       </div>
                   </div>
               </Container>

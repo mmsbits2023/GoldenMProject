@@ -4,9 +4,9 @@ exports.InvestorRegisterSchema={
     properties:{
         phoneNumber:{
             type:"string",
-            minLength:10,
-            maxLength:10,
-            pattern:"^[0-9()-.s]+$",
+           // minLength:10,
+            //maxLength:13,
+            //pattern:"^[0-9()-.s]+$",
         },
         mpin:{
             type:"string",
@@ -61,16 +61,16 @@ exports.InvestorLoginSchema = {
     properties: {
         phoneNumber: {
             type: "string",
-            minLength: 10,
-            maxLength: 10,
-            pattern: "^[0-9()-.s]+$",
+          //  minLength: 10,
+           // maxLength: 10,
+            //pattern: "^[0-9()-.s]+$",
         },
         mpin: {
             type: "string",
-            minLength: 8,
-            maxLength: 8,
-           //pattern: "^[0-9()-.s]+$"
-            pattern:"(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!])^[0-9()-.s]+$"
+            minLength: 9,
+            maxLength: 13,
+           pattern: "^[0-9()-.s]+$"
+            //pattern:"(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!])^[0-9()-.s]+$"
         }
     },
     required: ["phoneNumber", "mpin"]

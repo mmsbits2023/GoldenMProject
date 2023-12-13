@@ -3,9 +3,9 @@ const universalFunction = require('../Functions/universalFunction');
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const secretyKey = "abcdefghijklmnopqrstuvwxyzabcdef";
-const accountSid = 'ACa16c4cd259bbe48c80d9aa4f14c831ce';
-const authToken = '94d140d930cbd7c100d6986d2b66a723';
-const twilioPhoneNumber = '+12315359876';
+const accountSid = 'AC546c895e89948f2f1b9cd6bbbb3887b6';
+const authToken = '1af35f7350c83053c0e3f17677e7d1d9';
+const twilioPhoneNumber = '+16076956331';
 
 const client = require('twilio')(accountSid, authToken);
 
@@ -26,7 +26,7 @@ exports.registerInvestor = (async (request, response, next) => {
             code
         } = request.body;
         
-        const InvestorData = await InvestorDetails.find({ phoneNumber: phoneNumber }).countDocuments();
+        const InvestorData = await InvestorDetails.find({ phoneNumber:phoneNumber }).countDocuments();
         if (InvestorData > 0) {
             return response.status(409).send({
                 status: "FAILURE",

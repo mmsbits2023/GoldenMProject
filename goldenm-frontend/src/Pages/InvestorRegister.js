@@ -12,7 +12,7 @@ import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
 
 const InvestorRegister = () => {
- /*Country list */     
+ /*Country list      
 const countryOptions = Object.keys(countries).map((countryCode) => ({
   value: countryCode,
   label: countries[countryCode].name,
@@ -21,22 +21,22 @@ const countryOptions = Object.keys(countries).map((countryCode) => ({
         const handleChange = (selectedOption) => {
             setSelectedCountry(selectedOption);
         };
-  /*country code */
+  /*country code 
    const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleOnChange = (value, data) => {
     // `value` contains the selected phone number with country code
     setPhoneNumber(value);
-  };
+  };*/
   const navigate =useNavigate();
   const [data, setData] = useState({
     firstName: '',
     middleName: '',
     lastName: '',
-   // phoneNumber: '',
+   phoneNumber: '',
     email: '',
     mpin:'',
-  // country:'',
+  country:'',
    city:'',
    photoId:'',
    walletAddress:''
@@ -105,7 +105,7 @@ const [errors, setErrors] = useState('');
 
     setErrors(validationErrors);
     
-    if (Object.keys(validationErrors).length === 0) {
+    if (Object.keys(validationErrors).length === 0 ) {
       const { firstName, middleName, lastName,
         phoneNumber,email, mpin, country,city,photoId,walletAddress } = data;
         
@@ -130,7 +130,7 @@ const [errors, setErrors] = useState('');
         
       });
       
-      const result = await response.json();
+      const result = await response.json(data);
 
       if (result.status === 422 || !data) {
         window.alert("Inavalid Registeration");
@@ -185,17 +185,18 @@ const [errors, setErrors] = useState('');
                          onChange={handleInput} />
                          {errors.lastName && <span className='errorData'>{ errors.lastName}</span> }
                         </div>
-                      {/*<div className="mb-1 register">
+                      <div className="mb-1 register">
                         <label htmlFor="PhoneNumberId" className="form-label">
                     PhoneNumbber </label>
                       <input type="text" name="phoneNumber" className="form-control" id="PhoneNumberId" //autocomplete="off"
-  />
-  </div>*/}                                              
-                      <PhoneInput className='selecte-data'
+  onChange={handleInput}/>
+  {errors.phoneNumber && <span className='errorData'>{ errors.phoneNumber}</span> }
+  </div>                                              
+                      {/*<PhoneInput className='selecte-data'
                          placeholder='Enter phone number'
                         country={'in'} // Default country (you can set to any country code)
                         value={phoneNumber}
-                        onChange={handleChange}/>
+  onChange={handleChange}/>*/}
                          {/* {errors.phoneNumber && <span className='errorData'>{ errors.phoneNumber}</span> }*/}
                                    </div>
                 <div className='flex-container'>
@@ -222,25 +223,23 @@ const [errors, setErrors] = useState('');
                      onChange={handleInput} />
                         {errors.photoId&& <span className='errorData'>{ errors.photoId}</span> }                 
                                          </div>   
-                      {/* <div className="mb-1 register">             
+                       <div className="mb-1 register">             
                   <label htmlFor="CountryId" className="form-label">
                     Country</label>
-                          <select id="country" style={{width:"50%",height:"50%"}}>
-                          <option value="india">India</option>
-                        <option value="us">Us</option>
-                   
-                 </select>
-  </div>*/}
+                    <input type="text" name="country" className="form-control" id="CountryId" //autocomplete="off"
+                     onChange={handleInput} />   
+                 {errors.country&& <span className='errorData'>{ errors.country}</span> }
+  </div>
             
     
-        <Select className='selecte-data'
+       {/* <Select className='selecte-data'
               
         onChange={handleChange}
         options={countryOptions}
         isSearchable={true}
         placeholder="Select a country"
         
-      />
+/>*/}
         {/* {errors.country&& <span className='errorData'>{ errors.country}</span> }*/}
             </div>        
             <div className='flex-container'>

@@ -33,10 +33,10 @@ const InvestorLogout= () => {
 
       if (!data.phoneNumber) {
           validationErrors.phoneNumber = 'PhoneNumber is required'
-      } else if (data.phoneNumber.length < 13) {
-          validationErrors.phoneNumber = "PhoneNumber should be at least 13 digit with country code"
-      } else if (data.phoneNumber.length > 13) {
-          validationErrors.phoneNumber = "PhoneNumber should be at least 13 digit with country code"
+      } else if (data.phoneNumber.length < 10) {
+          validationErrors.phoneNumber = "PhoneNumber should be at least 10 digit "
+      } else if (data.phoneNumber.length > 10) {
+          validationErrors.phoneNumber = "PhoneNumber should be at least 10 digit "
       }
       
       if (!data.mpin) {

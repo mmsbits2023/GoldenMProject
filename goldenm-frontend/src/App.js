@@ -9,6 +9,8 @@ import InvestorLogin from "./Pages/InvestorLogin";
 import HomePage from './Pages/HomePage';
 import InvestorLogout from "./Pages/InvestorLogout";
 import BuyGoldCoin from "./Pages/BuyGoldCoin";
+import AddCoinDetails from "./Pages/AddCoinDetails";
+import PaymentDetails from "./Pages/PaymentDetails";
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path='/register' element={<InvestorRegister/>} />
         <Route path='/logout' element={<InvestorLogout />} />
         <Route path='/buyGoldCoin' element={ <BuyGoldCoin/>} />
+        <Route path='/addCoinDetails' element={ <AddCoinDetails/>} />
+        <Route path='/paymentDetails' element={ <PaymentDetails/>} />
       </Routes> 
       <Footer/>
   </div>
