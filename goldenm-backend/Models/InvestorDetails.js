@@ -4,18 +4,18 @@ const { v1: uuidv1 } = require("uuid");
 
 const InvestorSchemas = new mongoose.Schema({
 
-    firstName: {
+    fullName: {
         type: String,
               
     },
-    middleName: {
+   /* middleName: {
         type: String,
         
     },
     lastName: {
         type: String,
         
-    },
+    },*/
     phoneNumber: {
         type: String,
         required:""

@@ -150,3 +150,38 @@ exports.logoutInvestorSchemas = {
   },
   required: ["phoneNumber"],
 };
+
+//CoinDetails 
+
+exports.addCoinDetailsSchemas = {
+
+  type: "object",
+  properties: {
+    coinNumber: {
+      type: "string",
+      minLength: 1,
+      maxLength: 2,
+      pattern: "^[0-9()-.s]+$",
+    },
+    coinValue: {
+      type: "string",
+      //minLength: 1,
+     // maxLength: 2,
+      pattern: "^[0-9()-.s]+$",
+    },
+    coinWeight: {
+      type: "string",
+     // minLength: 1,
+      //maxLength: 2,
+      pattern: "^[0-9()-.s]+$",
+    },
+    coinToken: {
+      type: "string",
+     // minLength: 1,
+     // maxLength: 2,
+      pattern: "^[0-9()-.s]+$",
+    },
+    
+  },
+  required: ["coinNumber"],
+};

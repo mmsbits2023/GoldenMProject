@@ -58,6 +58,7 @@ const AddCoinDetails= () => {
               })
           });
           const result = await response.json();
+          console.log("result---data",result);
           if (result.status === 422 || !data) {
               window.alert("Inavalid data");
               console.log("Inavalid data");
@@ -125,7 +126,7 @@ const AddCoinDetails= () => {
                              <div className="row-2 " style={{ width: "30%", textAlign: "center", marginLeft: "200px" }}>
                                 <NavLink to="/paymentDetails" component={NavLink}>
                                   <Button variant="outlined" className="p-1 bg-primary text-white">
-                                    Payment
+                                    Add
                                   </Button>
                                 </NavLink>
                               </div><br/>                              <div className="row-2" style={{ width: "30%", textAlign: "center", marginLeft: "200px" }}>

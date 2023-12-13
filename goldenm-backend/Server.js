@@ -5,6 +5,9 @@ const express = require("express");
 const app = express();
 const Port = process.env.PORT || 9006;
 const InvestorRouter = require('./Routes/InvestorRoutes/InvestorRoutes');
+const CoinRouter=require("./Routes/CoinRoutes/CoinRoutes");
+
+
 const bodyParser = require('body-parser');
 
 app.use(express.json());
@@ -14,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use('/investor',InvestorRouter.Router);
+app.use('/investor',CoinRouter.Router);
 
 
 

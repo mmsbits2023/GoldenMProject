@@ -13,9 +13,9 @@ exports.registerInvestor = (async (request, response, next) => {
     try {
         
         const {
-            firstName,
-            middleName,
-            lastName,
+            fullName,
+           // middleName,
+            //lastName,
             phoneNumber,      
             email,
             mpin,
@@ -35,9 +35,9 @@ exports.registerInvestor = (async (request, response, next) => {
         }
        
         const InvestorDetailsCheck = new InvestorDetails();
-        InvestorDetailsCheck.firstName = firstName;
-        InvestorDetailsCheck.middleName = middleName;
-        InvestorDetailsCheck.lastName = lastName;
+        InvestorDetailsCheck.fullName = fullName;
+       // InvestorDetailsCheck.middleName = middleName;
+        //InvestorDetailsCheck.lastName = lastName;
         InvestorDetailsCheck.phoneNumber = phoneNumber;
         InvestorDetailsCheck.email = email;
         InvestorDetailsCheck.password = mpin;
@@ -179,7 +179,7 @@ exports.InvestorLogout = async (request, response, next) => {
  exports.getAllInvestorList=async function (request,response,next){
     try{
        
-       var InvestorDetailsList=await InvestorDetails.find();    
+       var InvestorDetailsList=await InvestorDetails.find({});    
     
        if(InvestorDetailsList.length === 0 ){
         return response.status(400).send({
