@@ -15,6 +15,11 @@ import Add2Coin from "./Pages/AddCoinPages/Add2Coin";
 import Add3Coin from "./Pages/AddCoinPages/Add3Coin";
 import Add4Coin from "./Pages/AddCoinPages/Add4Coin";
 import Add5Coin from "./Pages/AddCoinPages/Add5Coin";
+import Add6Coin from "./Pages/AddCoinPages/Add6Coin";
+import Add7Coin from "./Pages/AddCoinPages/Add7Coin";
+import Add8Coin from "./Pages/AddCoinPages/Add8Coin";
+import Add9Coin from "./Pages/AddCoinPages/Add9Coin";
+import Add10Coin from "./Pages/AddCoinPages/Add10Coin";
 
 
 function App() {
@@ -32,6 +37,11 @@ function App() {
         <Route path='/add3Coin' element={ <Add3Coin/>} />
         <Route path='/add4Coin' element={ <Add4Coin/>} />
         <Route path='/add5Coin' element={ <Add5Coin/>} />
+        <Route path='/add6Coin' element={ <Add6Coin/>} />
+        <Route path='/add7Coin' element={ <Add7Coin/>} />
+        <Route path='/add8Coin' element={ <Add8Coin/>} />
+        <Route path='/add9Coin' element={ <Add9Coin/>} />
+        <Route path='/add10Coin' element={ <Add10Coin/>} />
         <Route path='/paymentDetails' element={ <PaymentDetails/>} />
       </Routes> 
       <Footer/>

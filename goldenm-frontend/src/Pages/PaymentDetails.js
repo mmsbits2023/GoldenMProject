@@ -88,8 +88,16 @@ const PaymentDetails= () => {
                                              
                                       <div className="col-6 " style={{ width: "30%", textAlign: "center", marginLeft: "200px" }}>
                                 <NavLink to="/pamentDetails" component={NavLink}>
-                                  <Button variant="outlined" className="p-1">
+                                  <Button variant="outlined" className="p-1 bg-primary text-white">
                                     Payment Options  
+                                  </Button>
+                                </NavLink>
+                              </div>
+                              <br/><br/>
+                              <div className="col-6 " style={{ width: "30%", textAlign: "center", marginLeft: "200px" }}>
+                                <NavLink to="/buyGoldCoin" component={NavLink}>
+                                  <Button variant="outlined" className="p-1 bg-primary text-white">
+                                    Back 
                                   </Button>
                                 </NavLink>
                               </div>
