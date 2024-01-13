@@ -10,6 +10,7 @@ const PayCoin = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [data, setData] = useState({
+    _id:'',
     coinNumber: '',
     coinValue: '',
     coinWeight: '',
@@ -40,6 +41,7 @@ const PayCoin = () => {
       const details = response.data;
 
       setData({
+        _id:details._id,
         coinNumber: details.coinNumber,
         coinValue: details.coinValue,
         coinWeight: details.coinWeight,
@@ -86,6 +88,7 @@ const PayCoin = () => {
           coinValue: data.coinValue,
           coinWeight: data.coinWeight,
           coinToken: data.coinToken,
+          _id:data._id,
         }),
       });
   

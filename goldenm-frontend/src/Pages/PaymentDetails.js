@@ -55,8 +55,8 @@ const PaymentDetails = () => {
     const fetchWalletAddress = async () => {
       try {
         if (selectedCoinData) {
+          //const apiUrl = `http://localhost:9006/getWalletAddress/${selectedCoinData._id}`;
           const apiUrl = `http://localhost:9006/getWalletAddress/65a263e6c419cc124c9badbc`;
-          
           const response = await fetch(apiUrl);
 
           if (!response.ok) {
