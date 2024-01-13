@@ -49,12 +49,13 @@ const PaymentDetails = () => {
   const location = useLocation();
   const selectedCoinData = location.state && location.state.selectedCoinData;
   const [walletAddress, setWalletAddress] = useState('');
+  const [refrralCode,setRefrralCode]=useState('');
 
   useEffect(() => {
     const fetchWalletAddress = async () => {
       try {
         if (selectedCoinData) {
-          const apiUrl = `http://localhost:9006/getWalletAddress/652fb4e8594e860294a08bac`;
+          const apiUrl = `http://localhost:9006/getWalletAddress/65a263e6c419cc124c9badbc`;
           
           const response = await fetch(apiUrl);
 
@@ -65,7 +66,9 @@ const PaymentDetails = () => {
           const data = await response.json();
 
           const fetchedWalletAddress = data.data.walletAddress;
+          const fetchrefrralcode=data.data.verificationCode;
           setWalletAddress(fetchedWalletAddress);
+          setRefrralCode(fetchrefrralcode);
         }
       } catch (error) {
         console.error('Error fetching wallet address:', error.message);
@@ -97,6 +100,8 @@ const PaymentDetails = () => {
             <td>{selectedCoinData.coinNumber}</td>
             <td>{selectedCoinData.coinToken}</td>
             <td>{walletAddress}</td>
+            <td>{refrralCode}</td>
+            <td>{selectedCoinData.coinToken*0.09}</td>
           </tr>
         </tbody>
       </table>

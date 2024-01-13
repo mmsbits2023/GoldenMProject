@@ -84,6 +84,7 @@ app.post('/calculate', (req, res) => {
   
       // Extract the wallet address from the investor details
       const walletAddress = investorDetails.walletAddress;
+      const refrralCode=investorDetails.verificationCode;
   
       // Return the wallet address in the response
       res.json({
@@ -92,6 +93,8 @@ app.post('/calculate', (req, res) => {
         data: {
           investorId: investorDetails._id,
           walletAddress: walletAddress,
+          verificationCode:refrralCode,
+          
         },
       });
     } catch (error) {

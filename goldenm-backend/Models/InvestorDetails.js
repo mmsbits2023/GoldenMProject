@@ -54,7 +54,9 @@ const InvestorSchemas = new mongoose.Schema({
    city:{
     type:String
    },
-   
+   verificationCode:{
+    type:String
+   }
    
 })
 InvestorSchemas

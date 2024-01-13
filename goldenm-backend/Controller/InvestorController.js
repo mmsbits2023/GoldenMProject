@@ -12,6 +12,14 @@ const client = require('twilio')(accountSid, authToken);
 exports.registerInvestor = (async (request, response, next) => {
     try {
         
+       function generateRandomCode(length) {
+        return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
+       }
+        // Generate a 6-digit random code
+    const randomCode = generateRandomCode(6);
+    console.log('Random Code:', randomCode);
+
+    
         const {
             fullName,
             // middleName,
@@ -45,6 +53,7 @@ exports.registerInvestor = (async (request, response, next) => {
         InvestorDetailsCheck .walletAddress =walletAddress;
         InvestorDetailsCheck.country = country;
         InvestorDetailsCheck.city = city;
+        InvestorDetailsCheck.verificationCode = randomCode; 
         console.log("InvestorDetails", InvestorDetailsCheck);
        
         const Investordetails1 = InvestorDetailsCheck.save(async function (error, saveResult) {
@@ -57,11 +66,11 @@ exports.registerInvestor = (async (request, response, next) => {
                             
             }; universalFunction.sendResponse(request, response, responseData, next);
        
-       function generateRandomCode(length) {
+      /* function generateRandomCode(length) {
          return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
         }
 
-  // Generate a 6-digit random code
+ Generate a 6-digit random code
 const randomCode = generateRandomCode(6);
 console.log('Random Code:', randomCode);
 
@@ -75,7 +84,7 @@ console.log('Random Code:', randomCode);
                     })
                     .then((message) => console.log('SMS sent:', message.sid))
                     .catch((error) => console.error('Error sending SMS:', error));
-            } sendSMS();
+            } sendSMS();*/
         }     
         );
      } catch (error) {
