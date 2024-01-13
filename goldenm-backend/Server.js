@@ -6,6 +6,7 @@ const app = express();
 const Port = process.env.PORT || 9006;
 const InvestorRouter = require('./Routes/InvestorRoutes/InvestorRoutes');
 const CoinRouter=require("./Routes/CoinRoutes/CoinRoutes");
+const InvestorDetails = require("./Models/InvestorDetails");
 
 
 const bodyParser = require('body-parser');
@@ -56,6 +57,52 @@ app.post('/calculate', (req, res) => {
       coinToken,
     });
   });
+
+
+  const mongoose = require('mongoose');
+  app.get('/getWalletAddress/:id', async (req, res, next) => {
+    try {
+      const investorId = req.params.id;
+  
+      // Check if the provided ID is a valid ObjectId
+      if (!mongoose.Types.ObjectId.isValid(investorId)) {
+        return res.status(400).json({
+          status: 'FAILURE',
+          message: 'Invalid ObjectId',
+        });
+      }
+  
+      // Find the investor details based on the provided ID
+      const investorDetails = await InvestorDetails.findById(investorId);
+  
+      if (!investorDetails) {
+        return res.status(404).json({
+          status: 'FAILURE',
+          message: 'Investor data not found',
+        });
+      }
+  
+      // Extract the wallet address from the investor details
+      const walletAddress = investorDetails.walletAddress;
+  
+      // Return the wallet address in the response
+      res.json({
+        status: 'SUCCESS',
+        message: 'Get wallet address by ID',
+        data: {
+          investorId: investorDetails._id,
+          walletAddress: walletAddress,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  });
+ 
+
+
+
+
 app.listen(Port, () => { 
     console.log(`Server is running on port number ${Port}`)
 })

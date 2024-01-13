@@ -34,7 +34,12 @@ Router.route('/getOneInvestorDetails').post(
     validationFunction.validateUser(InvestorSchema.getOneInvestorSchemas),
     InvestorController.getOneInvestorDetails
 );
-
+//Get wallet Address Investor Details
+Router.route('/getWalletAddressInvestorDetails').get(
+    universalFunction.authenticateUser,
+    validationFunction.validateUser(InvestorSchema.getOneInvestorSchemas),
+    InvestorController.getWalletAddressInvestorDetails
+);
 //Update Investor Details
 Router.route('/updateInvestorDetails').post(
     universalFunction.authenticateUser,

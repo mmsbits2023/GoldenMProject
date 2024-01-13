@@ -53,7 +53,8 @@ const InvestorSchemas = new mongoose.Schema({
    },
    city:{
     type:String
-   }
+   },
+   
    
 })
 InvestorSchemas

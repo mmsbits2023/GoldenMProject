@@ -14,7 +14,7 @@ exports.registerInvestor = (async (request, response, next) => {
         
         const {
             fullName,
-           // middleName,
+            // middleName,
             //lastName,
             phoneNumber,      
             email,
@@ -308,4 +308,41 @@ exports.getOneInvestorDetails = async function (request, response, next) {
     }
   };
 
- 
+ //selecte only wallet address -----
+ // Assuming you have the necessary imports and dependencies
+
+exports.getWalletAddressInvestorDetails = async function (request, response, next) {
+    try {
+      const { phoneNumber } = request.body;
+    //const inverstorId=request.params.id;
+ // Find the investor details based on the provided phoneNumber
+      const investorDetails = await InvestorDetails.findOne({phoneNumber:phoneNumber });
+  
+      if (!investorDetails) {
+        return response.status(404).send({
+          status: "FAILURE",
+          message: "Investor data not found",
+        });
+      }
+  
+      // Extract the wallet address from the investor details
+      const walletAddress = investorDetails.walletAddress;
+  
+      // Build the response object with the wallet address
+      let responseData = {
+        status: "SUCCESS",
+        message: "Get one investor details",
+        data: {
+          phoneNumber: investorDetails.phoneNumber,
+          walletAddress: walletAddress,
+        },
+      };
+  
+      // Send the response
+      universalFunction.sendResponse(request, response, responseData, next);
+  
+    } catch (error) {
+      next(error);
+    }
+  };
+  
