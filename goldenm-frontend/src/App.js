@@ -20,6 +20,8 @@ import Add7Coin from "./Pages/AddCoinPages/Add7Coin";
 import Add8Coin from "./Pages/AddCoinPages/Add8Coin";
 import Add9Coin from "./Pages/AddCoinPages/Add9Coin";
 import Add10Coin from "./Pages/AddCoinPages/Add10Coin";
+import BuyGold from "./Pages/BuyGoldCoin/BuyGold";
+import PayCoin from "./Pages/PayCoin";
 
 
 function App() {
@@ -43,6 +45,8 @@ function App() {
         <Route path='/add9Coin' element={ <Add9Coin/>} />
         <Route path='/add10Coin' element={ <Add10Coin/>} />
         <Route path='/paymentDetails' element={ <PaymentDetails/>} />
+        <Route path='/buygold' element={<BuyGold/>} />
+        <Route path="/payCoin"element={<PayCoin/>}/>
       </Routes> 
       <Footer/>
   </div>
