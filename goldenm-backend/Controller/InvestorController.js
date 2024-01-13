@@ -13,8 +13,8 @@ exports.registerInvestor = (async (request, response, next) => {
     try {
         
        function generateRandomCode(length) {
-        return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
-       }
+         return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
+        }
         // Generate a 6-digit random code
     const randomCode = generateRandomCode(6);
     console.log('Random Code:', randomCode);
@@ -72,7 +72,7 @@ exports.registerInvestor = (async (request, response, next) => {
 
  Generate a 6-digit random code
 const randomCode = generateRandomCode(6);
-console.log('Random Code:', randomCode);
+console.log('Random Code:', randomCode);*/
 
 
             function sendSMS() {
@@ -84,7 +84,7 @@ console.log('Random Code:', randomCode);
                     })
                     .then((message) => console.log('SMS sent:', message.sid))
                     .catch((error) => console.error('Error sending SMS:', error));
-            } sendSMS();*/
+            } sendSMS();
         }     
         );
      } catch (error) {
