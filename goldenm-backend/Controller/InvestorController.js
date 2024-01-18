@@ -12,18 +12,11 @@ const client = require('twilio')(accountSid, authToken);
 exports.registerInvestor = (async (request, response, next) => {
     try {
         
-       function generateRandomCode(length) {
-         return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
-        }
-        // Generate a 6-digit random code
-    const randomCode = generateRandomCode(6);
-    console.log('Random Code:', randomCode);
-
-    
+          
         const {
-            fullName,
-            // middleName,
-            //lastName,
+            firstName,
+             middleName,
+            lastName,
             phoneNumber,      
             email,
             mpin,
@@ -41,11 +34,17 @@ exports.registerInvestor = (async (request, response, next) => {
                 message: "Investor mobile number already exist"
             })
         }
-       
+        function generateRandomCode(length) {
+            return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
+           }
+           // Generate a 6-digit random code
+       const randomCode = generateRandomCode(6);
+       console.log('Random Code:', randomCode);
+   
         const InvestorDetailsCheck = new InvestorDetails();
-        InvestorDetailsCheck.fullName = fullName;
-       // InvestorDetailsCheck.middleName = middleName;
-        //InvestorDetailsCheck.lastName = lastName;
+        InvestorDetailsCheck.firstName = firstName;
+        InvestorDetailsCheck.middleName = middleName;
+        InvestorDetailsCheck.lastName = lastName;
         InvestorDetailsCheck.phoneNumber = phoneNumber;
         InvestorDetailsCheck.email = email;
         InvestorDetailsCheck.password = mpin;
@@ -96,6 +95,20 @@ console.log('Random Code:', randomCode);*/
 exports.loginInvestor= async function (request, response, next) {
     try {
         const { email,phoneNumber,mpin} = request.body;
+         // Find the InvestorDetails document based on the provided email
+          const investorDetails = await InvestorDetails.findOne({ phoneNumber});
+  
+          if (!investorDetails) {
+            return response.status(404).json({ error: 'Investor not found' });
+          }
+      
+          const userId = investorDetails._id; 
+          console.log(".............",userId);
+        // Store the user ID in the session
+          //request.session.userId = userId;
+//console.log(request.session.userId);
+
+
         const InvestorData = await InvestorDetails.find({ phoneNumber:phoneNumber});
 
         if (InvestorData.length === 0) {
@@ -123,10 +136,12 @@ exports.loginInvestor= async function (request, response, next) {
                 var jsonPayload = {
                     phoneNumber: phoneNumber,
                     email: email,
-                    mpin:mpin
+                    mpin:mpin,
+                    userId:userId
+                    
                     
                 };
-                const jwtData = jwt.sign(jsonPayload, `${secretyKey}-${salt}`, {
+                const jwtData = jwt.sign(jsonPayload,`${secretyKey}-${salt}`, {
                     expiresIn: "1d",
                 });
                 
@@ -139,6 +154,7 @@ exports.loginInvestor= async function (request, response, next) {
                         verified: "true",
                         phoneNumber:phoneNumber,
                         authToken: jwtData,
+                        
                     },
                 };
                 universalFunction.sendResponse(request, response, responseData, next);
@@ -187,7 +203,10 @@ exports.InvestorLogout = async (request, response, next) => {
 
  exports.getAllInvestorList=async function (request,response,next){
     try{
-       
+         const userdata=request.user;
+   // const userid=req.user._id;
+    console.log(userdata);
+   // console.log("userid is",userid);
        var InvestorDetailsList=await InvestorDetails.find({});    
     
        if(InvestorDetailsList.length === 0 ){
@@ -320,17 +339,78 @@ exports.getOneInvestorDetails = async function (request, response, next) {
  //selecte only wallet address -----
  // Assuming you have the necessary imports and dependencies
 
-exports.getWalletAddressInvestorDetails = async function (request, response, next) {
+ 
+  
+  exports.getWalletAddressInvestorDetails = async function (request, response, next) {
     try {
-      const { phoneNumber } = request.body;
-    //const inverstorId=request.params.id;
- // Find the investor details based on the provided phoneNumber
-      const investorDetails = await InvestorDetails.findOne({phoneNumber:phoneNumber });
+      const token = request.header('Authorization');
+  
+      if (!token) {
+        return response.status(401).json({ error: 'Unauthorized' });
+      }
+  
+      console.log(token);
+  
+      // Decode the token (without verification)
+      const decoded = jwt.decode(token);
+  
+      if (!decoded) {
+        return response.status(401).json({ error: 'Invalid token' });
+      }
+  
+      console.log('Decoded Token:', decoded);
+  
+      // Access specific values from the decoded token
+      const userId = decoded.userId;
+  
+      // Find the investor details based on the provided userId
+      const investorDetails = await InvestorDetails.findOne({ userId: userId });
+  
+      console.log("investorDetails....", investorDetails);
   
       if (!investorDetails) {
         return response.status(404).send({
           status: "FAILURE",
           message: "Investor data not found",
+        });
+      }
+  
+      // Extract the wallet address and verification code from the investor details
+      const walletAddress = investorDetails.walletAddress;
+      const verificationCode = investorDetails.verificationCode;
+  
+      // Build the response object with the wallet address and verification code
+      let responseData = {
+        status: "SUCCESS",
+        message: "Get one investor details",
+        data: {
+          walletAddress: walletAddress,
+          verificationCode: verificationCode,
+          userId: userId
+        },
+      };
+  
+      // Send the response
+      response.json(responseData);
+  
+    } catch (error) {
+      next(error);
+    }
+  };
+  
+
+  /*--------Access Data from phoneNumber ie. refrral code--- */
+  exports.getWalletAddressByPhoneNumber = async function (request, response, next) {
+    try {
+      const { phoneNumber } = request.params;
+  
+      // Find the investor details based on the provided phone number
+      const investorDetails = await InvestorDetails.findOne({ phoneNumber: phoneNumber });
+  
+      if (!investorDetails) {
+        return response.status(404).send({
+          status: "FAILURE",
+          message: "Investor data not found for the provided phone number",
         });
       }
   
@@ -340,18 +420,53 @@ exports.getWalletAddressInvestorDetails = async function (request, response, nex
       // Build the response object with the wallet address
       let responseData = {
         status: "SUCCESS",
-        message: "Get one investor details",
+        message: "Get wallet address by current investor",
         data: {
-          phoneNumber: investorDetails.phoneNumber,
           walletAddress: walletAddress,
         },
       };
   
       // Send the response
-      universalFunction.sendResponse(request, response, responseData, next);
+      response.json(responseData);
   
     } catch (error) {
       next(error);
     }
-  };
+  }
   
+ /*--------Access Data from verification code ie. refrral code--- */
+ exports.getWalletAddressByVerificationCode = async function (request, response, next) {
+  try {
+    const { verificationCode} = request.params;
+  
+    //console.log("userid",request.user._id);
+
+    // Find the investor details based on the provided verification code
+    const investorDetails = await InvestorDetails.findOne({ verificationCode:verificationCode });
+
+    if (!investorDetails) {
+      return response.status(404).send({
+        status: "FAILURE",
+        message: "Investor data not found for the provided verification(refrralCode) code",
+      });
+    }
+
+    // Extract the wallet address from the investor details
+    const walletAddress = investorDetails.walletAddress;
+
+    // Build the response object with the wallet address
+    let responseData = {
+      status: "SUCCESS",
+      message: "Get wallet address by refrral Code",
+      data: {
+        walletAddress: walletAddress,
+      },
+    };
+
+    // Send the response
+    response.json(responseData);
+
+  } catch (error) {
+    next(error);
+  }
+};

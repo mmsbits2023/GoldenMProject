@@ -12,7 +12,7 @@ exports.InvestorRegisterSchema={
             type:"string",
             minLength:9,
             maxLength:16,
-            pattern:"^[0-9()-.s]+$",
+            //pattern:"^[0-9()-.s]+$",
            // pattern:"(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!])^[0-9()-.s]+$"
       },
       firstName: {
@@ -69,7 +69,7 @@ exports.InvestorLoginSchema = {
             type: "string",
             minLength: 9,
             maxLength: 13,
-           pattern: "^[0-9()-.s]+$"
+           //pattern: "^[0-9()-.s]+$"
             //pattern:"(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&+=!])^[0-9()-.s]+$"
         }
     },

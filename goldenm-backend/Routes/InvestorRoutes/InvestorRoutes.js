@@ -40,6 +40,20 @@ Router.route('/getWalletAddressInvestorDetails').get(
     validationFunction.validateUser(InvestorSchema.getOneInvestorSchemas),
     InvestorController.getWalletAddressInvestorDetails
 );
+
+//Get wallet Address Investor Details by phoneNumber
+Router.route('/getWAVerificationCode/:phoneNumber').get(
+    universalFunction.authenticateUser,
+   // validationFunction.validateUser,//(InvestorSchema.getOneInvestorSchemas),
+    InvestorController.getWalletAddressByPhoneNumber
+);
+//Get wallet Address Investor Details by verification Code
+Router.route('/getWalletAddress/:verificationCode').get(
+    universalFunction.authenticateUser,
+    //validationFunction.validateUser,//(InvestorSchema.getOneInvestorSchemas),
+    InvestorController.getWalletAddressByVerificationCode
+);
+
 //Update Investor Details
 Router.route('/updateInvestorDetails').post(
     universalFunction.authenticateUser,
@@ -52,6 +66,8 @@ Router.route('/deleteInvestorDetails').post(
     validationFunction.validateUser(InvestorSchema.deleteInvestorSchemas),
     InvestorController.deleteInvestor
 )
+
+
 exports.Router=Router;
 
 

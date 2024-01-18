@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { Avatar } from '@mui/material'
 import { green } from '@mui/material/colors'
 import { Form } from 'react-bootstrap'
+
 //import PhoneInput from 'react-phone-input-2'
 //import { AiFillInfoCircle } from 'react-icons/ai'
 
@@ -17,7 +18,8 @@ const InvestorLogin= () => {
   const [data, setData] = useState({
       email:'',
       phoneNumber: '',
-      mpin:''
+      mpin:'',
+      _id:''
   });
   const handleInput = (event) => { 
       setData({...data,[event.target.name]:event.target.value})
@@ -50,7 +52,7 @@ const InvestorLogin= () => {
       setErrors(validationErrors);
 
       if (Object.keys(validationErrors).length === 0) {
-          const { email, phoneNumber, mpin } = data;
+          const { email, phoneNumber, mpin ,_id} = data;
           const response = await fetch("http://localhost:9006/investor/login", {
               method: "POST",
               headers: {
@@ -59,18 +61,24 @@ const InvestorLogin= () => {
               body: JSON.stringify({
                   email: email,
                   phoneNumber: phoneNumber,
-                  mpin: mpin
+                  mpin: mpin,
+                  
               })
+              
           });
+          console.log(".....",data._id);
           const result = await response.json();
           if (result.status === 422 || !data) {
               window.alert("Inavalid Login");
               console.log("Inavalid Login");
           }
           else {
+            
               window.alert("Login Successfully");
               console.log("Successfully Login");
-              navigate('/payCoin');
+              console.log(phoneNumber)
+              navigate(`/payCoin`,{state:{phoneNumber}}
+            );
         
           
           }
@@ -139,7 +147,7 @@ const InvestorLogin= () => {
                                 </NavLink>
                               </div>
                             
-                            
+                      
                           </Form>     
                               </section>
                           </Card.Body>

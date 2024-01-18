@@ -5,9 +5,18 @@ const validationFunction = require("../../Functions/validationFunction");
 const Router = require("express").Router();
 
 
-//Add Coin Details  API
+// Coin Details  API
 Router.route('/coinDetails').post(
+   universalFunction.authenticateUser,
    validationFunction.validateUser(CoinSchema.addCoinDetailsSchemas),
-   CoinController.CoinDetails
+   CoinController.CoinDetailsData
+);
+//calculation
+
+
+Router.route('/calculate').post(
+   universalFunction.authenticateUser,
+   validationFunction.validateUser(CoinSchema.addCoinDetailsSchemas),
+   CoinController.CoinCalculation
 );
 exports.Router=Router;

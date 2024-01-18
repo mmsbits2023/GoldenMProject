@@ -8,8 +8,7 @@ import { green } from '@mui/material/colors'
 import { Form } from 'react-bootstrap'
 import Select from 'react-select';
 import { countries } from 'countries-list';
-import 'react-phone-input-2/lib/style.css';
-import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
 
 const InvestorRegister = () => {
  /*Country list      
@@ -39,7 +38,8 @@ const countryOptions = Object.keys(countries).map((countryCode) => ({
   country:'',
    city:'',
    photoId:'',
-   walletAddress:''
+   walletAddress:'',
+   
 })
 const handleInput = (event) => { 
   setData({ ...data, [event.target.name]: event.target.value })
@@ -124,13 +124,15 @@ const [errors, setErrors] = useState('');
          country:country,
          city:city,
          photoId:photoId,
-         walletAddress:walletAddress
+         walletAddress:walletAddress,
+         
 
         })
         
       });
-      
+     // const newUserId = response.data.data._id;
       const result = await response.json(data);
+      console.log(data);
 
       if (result.status === 422 || !data) {
         window.alert("Inavalid Registeration");
@@ -139,7 +141,7 @@ const [errors, setErrors] = useState('');
       else {
         window.alert("Registeration Successfully");
         console.log("Successfully Registration");
-        navigate('/login');
+        navigate(`/login`);
           
             
       }
